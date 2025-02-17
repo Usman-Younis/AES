@@ -62,7 +62,7 @@ void HexStr2CharStr(char const* pszHexStr, unsigned char* pucCharStr, int iSize)
 	}
 }
 
-void main()
+int main()
 {
 	try
 	{
@@ -86,5 +86,8 @@ void main()
 	{
 		cout << roException.what() << endl;
 	}
+
+	return 0;
+
 }
 

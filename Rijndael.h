@@ -1,4 +1,3 @@
-
 //Rijndael.h
 
 #ifndef __RIJNDAEL_H__
@@ -6,6 +5,7 @@
 
 #include <exception>
 #include <cstring>
+#include <stdexcept> // Add this line
 
 using namespace std;
 
@@ -76,8 +76,8 @@ private:
 	//Auxiliary Function
 	void Xor(char* buff, char const* chain)
 	{
-		if(false==m_bKeyInit)
-			throw exception(sm_szErrorMsg1);
+		if(false == m_bKeyInit)
+			throw std::runtime_error(sm_szErrorMsg1); // Updated line
 		for(int i=0; i<m_blockSize; i++)
 			*(buff++) ^= *(chain++);	
 	}
@@ -113,7 +113,7 @@ public:
 	int GetKeyLength()
 	{
 		if(false==m_bKeyInit)
-			throw exception(sm_szErrorMsg1);
+			throw std::runtime_error(sm_szErrorMsg1);
 		return m_keylength;
 	}
 
@@ -121,7 +121,7 @@ public:
 	int	GetBlockSize()
 	{
 		if(false==m_bKeyInit)
-			throw exception(sm_szErrorMsg1);
+			throw std::runtime_error(sm_szErrorMsg1);
 		return m_blockSize;
 	}
 	
@@ -129,7 +129,7 @@ public:
 	int GetRounds()
 	{
 		if(false==m_bKeyInit)
-			throw exception(sm_szErrorMsg1);
+			throw std::runtime_error(sm_szErrorMsg1);
 		return m_iROUNDS;
 	}
 
